@@ -1,0 +1,5 @@
+Source: https://github.com/cursor/plugins.git
+Subdirectory: pstack
+Revision: ec569379616a4826b98f0f0a205dd3411b573611
+License: MIT. See pstack/LICENSE for the original copyright and license.
+Original content was copied unchanged. Active Genie Code skills are under .agents/skills/.
