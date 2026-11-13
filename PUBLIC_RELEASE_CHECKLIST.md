@@ -2,36 +2,36 @@
 
 `pstack-genie` is an independent, public, community-maintained project designed for Genie Code web and CLI. Publishing this source does **not** publish or configure any Databricks workspace.
 
-Before making the GitHub repository public:
+Before publishing or changing repository visibility:
 
-- [ ] Confirm the code may legally be published and retain upstream license and copyright notices.
-- [ ] Review **all committed files and full Git history** for credentials, company or customer data, private schemas, internal links, and proprietary configurations. `.gitignore`.
+- [ ] Confirm the code may legally be published, including any required employer or contributor approval, and retain upstream license and copyright notices.
+- [ ] Review the files that will be public and **all Git history** for credentials, company or customer data, private schemas, internal links, and proprietary configurations. `.gitignore` does not remove files from existing commits.
 - [ ] Run `python scripts/validate_repo.py`, `python scripts/check_public_release.py`, and `python -m unittest discover -s tests -v`.
-- [ ] Scan the **complete Git history** with a dedicated secret-scanning tool, such as Gitleaks, not only the working tree.
+- [ ] Scan the **complete Git history and current files** with a dedicated secret-scanning tool, such as Gitleaks. Record the tool and result; the repository check is not a substitute.
 - [ ] If importing upstream pstack, inspect `vendor/pstack/` for release suitability, retain original licenses/attribution, and record the upstream revision.
 - [ ] Do not commit `.env`, `.databrickscfg`, tokens, local Genie profiles, workspace exports, logs, or company-specific code/data.
 - [ ] Verify the README accurately describes what works and what remains unported; do not suggest endorsement by Databricks or Cursor.
 - [ ] Configure GitHub branch protection or rulesets, required checks, and pull request reviews as appropriate.
 - [ ] Review the GitHub Actions workflow for least privilege and security before allowing outside contributions.
-- [ ] Enable private vulnerability reporting, set up an appropriate security contact, and review public issues before discussing sensitive bugs.
+- [ ] Configure a private security reporting method and appropriate security contact before directing researchers to report sensitive issues.
 
-## Publishing a new public GitHub repository
+## Publishing to a new GitHub repository
 
-1. On GitHub, create a new repository named **`pstack-genie`** in the intended account or organization. Choose **Public** visibility, if authorized.
-2. Create it **empty** (do not initialize a README, `.gitignore`, or license), because these files already exist locally.
-3. After reviewing the local files and Git history, run:
+1. Confirm the intended owner and repository name. Create an empty repository on GitHub; do not initialize a README, `.gitignore`, or license because those files are already in this checkout.
+2. From the repository root, confirm the branch, working tree, history, and remotes:
 
    ```bash
-   git init
-   git add .
-   git commit -m "Initial public pstack-genie starter"
-   git branch -M main
-   git remote add origin https://github.com/<YOUR_USERNAME>/pstack-genie.git
-   git push -u origin main
+   git status --short --branch
+   git log --oneline --decorate --all
+   git remote -v
    ```
 
-4. Verify the public repository from an unauthenticated browser and inspect visible Actions logs and repository contents for sensitive material.
-5. On GitHub, configure **Settings → Rules → Rulesets** or branch protection, Actions permissions, and security features appropriate for a public repository.
+3. If this checkout has no remote, add the reviewed repository URL. If it already has a remote, verify that it points to the intended owner and repository; do not add a second `origin`.
+4. After final review and authorization to publish, push the intended branch. Do not use `git init` on an already initialized checkout.
+5. Verify the public repository from an unauthenticated browser and inspect visible Actions logs and repository contents for sensitive material.
+6. On GitHub, configure **Settings → Rules → Rulesets** or branch protection, Actions permissions, and security reporting appropriate for a public repository.
+
+This checkout already has a `main` branch and an `origin` tracking `origin/main`. Confirm the remote destination before pushing; the steps above are not a request to publish changes automatically.
 
 ## Switching an existing GitHub repository to public
 
