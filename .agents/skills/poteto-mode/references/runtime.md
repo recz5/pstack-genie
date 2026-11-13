@@ -6,17 +6,13 @@ Invoke the skill with:
 
 /poteto-mode <task description>
 
-For manual installation, the skill resides at:
+To use the project copy, register the parent `.agents/skills/` folder in Genie Code Settings. Databricks also supports default personal skills under `/Users/<user>/.assistant/skills/`; use the path shown by your workspace rather than assuming a local filesystem path.
 
-/Workspace/Users/<user>/.assistant/skills/poteto-mode/
-
-The installed skill is independent of GitHub.
-Updates require manually synchronizing the files.
+Workspace skills and project files are separate copies. Refresh or re-register the workspace copy when the repository skill changes.
 
 ## Genie Code CLI
 
-Use the project-level .agents/skills/poteto-mode/
-directory.
+Genie Code CLI discovers project skills from `.agents/skills/` and personal skills from `~/.genie/skills/`.
 
 CLI invocation compatibility must be tested
 separately.

@@ -8,7 +8,7 @@ Tell `poteto-mode` what you want to accomplish. It chooses an investigation, des
 
 This is a community-maintained project, not an official Databricks, Cursor, or Lauren Tan release.
 
-> **Project status — starter adaptation.** The skills in this repository are working **independent adaptations** for Genie Code, not a complete port of upstream pstack. The included importer can bring the original source into `vendor/pstack/` for review. Cursor-specific subagents, hooks, and model orchestration are not enabled just by importing it. See [Port status](#port-status).
+> **Project status — starter adaptation.** This repository contains **independent adaptations** for Genie Code, not a complete port of upstream pstack. The included importer can bring the original source into `vendor/pstack/` for review. Cursor-specific subagents, hooks, and model orchestration are not enabled just by importing it. Runtime compatibility still needs to be verified in your Genie Code environment. See [Port status](#port-status).
 
 ## Built for Genie Code
 
@@ -21,7 +21,7 @@ The same `.agents/skills/` directory is the source of truth for both runtimes:
 | **Best for** | Working with authorized workspace objects, SQL, data, and notebooks | Local repositories, code review, development workflows, and authorized Databricks resources |
 | **Skill source** | `.agents/skills/` | `.agents/skills/` |
 
-Genie Code supports [custom agent skills in the workspace](https://docs.databricks.com/aws/en/genie-code/skills/) and [local or project-level skills in the CLI](https://docs.databricks.com/aws/en/genie-code/genie-code-cli). Availability of individual tools and permissions still depends on your environment.
+Genie Code supports [custom agent skills in the workspace](https://docs.databricks.com/aws/en/genie-code/skills/) and [local or project-level skills in the CLI](https://docs.databricks.com/aws/en/genie-code/genie-code-cli). Genie Code CLI is currently in beta; Databricks documents a Databricks CLI version 1.0.0 or later, Unity Catalog, and a workspace in a Unity Gateway-supported region as requirements. Check the linked documentation for current requirements.
 
 ## Install
 
@@ -162,7 +162,7 @@ python scripts/rename_skill.py mango-mode --from poteto-mode
 python scripts/rename_skill.py mango-mode --from poteto-mode --apply
 ```
 
-The script renames the folder under `.agents/skills/`, updates the `SKILL.md` metadata and maintained references in the repository, and leaves `vendor/pstack/` and `port-validation/` untouched. It **does not** commit or push changes, rename the GitHub repository, or update separately installed Genie Code skills.
+The script renames the folder under `.agents/skills/` and updates the `SKILL.md` metadata and maintained references in the repository. It leaves `vendor/pstack/` untouched. It **does not** commit or push changes, rename the GitHub repository, or update separately installed Genie Code skills.
 
 After renaming, review and validate the changes:
 

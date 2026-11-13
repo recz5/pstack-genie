@@ -4,12 +4,12 @@
 Rename the locally maintained Genie Code skill.
 
 Usage:
-    python scripts/rename_skill.py ube-mode
-    python scripts/rename_skill.py ube-mode --apply
-    python scripts/rename_skill.py mango-mode --from ube-mode --apply
+    python3 scripts/rename_skill.py ube-mode
+    python3 scripts/rename_skill.py ube-mode --apply
+    python3 scripts/rename_skill.py mango-mode --from ube-mode --apply
 
 Dry-run by default. Does not commit, push, or deploy.
-Preserves vendored upstream files and validation fixtures.
+Preserves vendored upstream files.
 """
 
 from __future__ import annotations
@@ -32,7 +32,6 @@ SKILL_PARENT = Path(".agents/skills")
 SKIP_DIRS = {
     ".git",
     "vendor",
-    "port-validation",
     "node_modules",
     ".next",
     ".venv",
@@ -403,7 +402,7 @@ def main() -> int:
         print("  ", relative)
 
     print(
-        "Excluded: vendor/, port-validation/, "
+        "Excluded: vendor/, "
         "upstream import files, this script, "
         "and binary files"
     )
